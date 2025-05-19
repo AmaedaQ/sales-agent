@@ -1,62 +1,74 @@
 
-# Sales Agent with Google ADK
+# Conversational Sales Agent (Simulating Google ADK)
 
-![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
-![GitHub](https://img.shields.io/github/license/AmaedaQ/sales-agent)
+This Python project implements a conversational sales agent that handles multiple leads concurrently, collects information, and manages follow-ups. It was developed for the AI Candidates Evaluation Task.
 
-A conversational sales agent that handles multiple lead interactions with automated follow-ups using Google's Agent Development Kit.
+**Note on Google ADK:** This project simulates Google ADK functionalities using standard Python (`asyncio`) as the specific ADK was not provided/readily available. The aim is to demonstrate core agent orchestration, context management, and concurrent processing.
 
-## 🚀 Features
-- **Multi-conversation handling** - Manages multiple leads simultaneously
-- **Automated follow-ups** - 24-hour reminder system
-- **Data collection** - Structured information gathering
-- **CSV storage** - Persistent lead data storage
+## Core Features
 
-## 📦 Installation
-```bash
-git clone https://github.com/AmaedaQ/sales-agent.git
-cd sales-agent
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-pip install -r requirements.txt
+* **Concurrent Lead Handling:** Manages multiple conversations simultaneously using `asyncio`.
+* **Information Collection:** Engages leads to collect consent, age, country, and product interest.
+* **Data Persistence:** Stores lead data in a CSV file (`leads.csv` or `simulation_leads.csv`).
+* **Automated Follow-ups:** Sends follow-up messages to unresponsive leads after a simulated delay.
+* **State Management:** Tracks the state of each conversation independently.
+
+## Project Structure
+
 ```
 
-## ⚙️ Configuration
-1. Create `config.ini`:
-```ini
-[DEFAULT]
-CREDENTIALS_PATH = path/to/service-account.json
-CSV_STORAGE = leads.csv
-```
+sales\_agent\_project/
+├── agent.py             \# Agent's conversational logic
+├── state\_manager.py     \# Manages state & CSV persistence
+├── main.py              \# Main application entry point & demo
+├── simulation.py        \# Targeted test case simulations
+├── leads.csv            \# Output from main.py
+├── requirements.txt     \# Dependencies
+└── README.md            \# This file
 
-2. Set up Google Cloud credentials:
-- Enable Dialogflow CX API
-- Create service account with Dialogflow Agent Admin role
+````
 
-## 🖥️ Usage
+## Setup
+
+1.  **Clone the repository (or download files).**
+2.  **Navigate to the project directory:**
+    ```bash
+    cd sales_agent_project
+    ```
+3.  **Create and activate a Python virtual environment:**
+    ```bash
+    python -m venv .venv
+    # Windows: .\.venv\Scripts\activate
+    # macOS/Linux: source .venv/bin/activate
+    ```
+4.  **Install dependencies:**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+## Usage
+
+### 1. Run the Main Demonstration
+
+This runs a built-in simulation showcasing multiple leads and follow-ups. Output is saved to `leads.csv`.
+
 ```bash
-# Start the agent
 python main.py
+````
 
-# Simulate leads (5 leads)
-python trigger_simulator.py --leads 5
+### 2\. Run Specific Test Scenarios
 
-# Test follow-ups
-python followup_manager.py --test-mode
+This executes predefined test cases (e.g., consent decline, successful flow, concurrency). Output is saved to `simulation_leads.csv`.
+
+```bash
+python simulation.py
 ```
 
-## 📂 Files
-| File | Purpose |
-| `agent.py` | Core agent logic |
-| `followup_manager.py` | Follow-up system |
-| `main.py` | Program entry point |
-| `leads.csv` | Lead data storage |
+## Key Design Choices
 
-## 📝 Data Storage
-All lead data is stored in `leads.csv` with columns:
-- `lead_id`, `name`, `age`, `country`, `interest`, `status`, `timestamp`
+  * **ADK Simulation:** Core ADK concepts (event handling, state, agent logic) are modeled with Python's `asyncio` and custom classes.
+  * **Concurrency:** `asyncio` for non-blocking I/O and concurrent conversation management.
+  * **State:** In-memory dictionary (`active_conversations` in `StateManager`) with `asyncio.Lock` for safe concurrent access.
+  * **Data Storage:** Lead details are logged to CSV files using `pandas`.
 
-## 📜 License
-MIT © 2025 [Amaeda]
-
+This project demonstrates the ability to design and implement a complex, stateful, and concurrent AI agent system.
