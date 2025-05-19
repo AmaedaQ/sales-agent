@@ -1,118 +1,149 @@
 
-# Conversational Sales Agent with Threaded Processing
+#  Conversational Sales Agent with Threaded Processing
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
-![GitHub](https://img.shields.io/github/license/AmaedaQ/sales-agent)
+![License](https://img.shields.io/github/license/AmaedaQ/sales-agent)
 ![Threading](https://img.shields.io/badge/multithreading-supported-green)
 
-A sales agent system that handles concurrent lead interactions with automated follow-ups, built with Python threading and rich terminal UI.
+A Python-based multi-threaded sales agent that simulates multiple concurrent lead conversations, handles automated follow-ups, and stores persistent lead data in a CSV file. Built with the `rich` library for a clean, interactive terminal UI.
 
-## 🚀 Key Features
+📽️ **Watch Demo:** [Tella Video Walkthrough](https://www.tella.tv/video/sales-agent-1-cpdm)
 
-- **Multi-threaded Processing**: Handles 5+ simultaneous lead conversations
-- **Rich Terminal UI**: Beautiful console output with `rich` library
-- **Automated Follow-ups**: 24-hour reminder system (configurable)
-- **CSV Data Storage**: Persistent lead tracking with `leads.csv`
-- **Thread-safe Operations**: Lock-protected shared resources
+---
 
-## 📦 Project Structure
+## 🚀 Features
 
-```
+- 🔄 Multi-threaded lead processing (5+ concurrent conversations)
+- 💬 Beautiful terminal UI using the `rich` library
+- ⏰ Automated follow-up system (e.g., 24-hour reminders)
+- 📁 CSV-based lead storage
+- 🧵 Thread-safe operations with locks for shared resources
+
+---
+
+## 📁 Project Structure
+
+<pre>
+
 sales-agent/
-├── agent.py               # Core conversation logic (70% of system)
+├── agent.py               # Core lead interaction logic
 ├── followup_manager.py    # Automated follow-up system
-├── main.py                # Entry point with thread orchestration
-├── trigger_simulator.py   # Lead generation simulator
-├── leads.csv              # Persistent lead storage
-├── requirements.txt       # Dependencies
-└── README.md
-```
+├── main.py                # Entry point and thread orchestration
+├── trigger_simulator.py   # Lead simulation for testing
+├── leads.csv              # Persistent storage of leads
+├── requirements.txt       # Required Python packages
+└── README.md              # Project documentation
 
-## 🛠️ Installation
+</pre>
+
+---
+
+## ⚙️ Installation
 
 ```bash
 git clone https://github.com/AmaedaQ/sales-agent.git
 cd sales-agent
 python -m venv venv
-# Windows:
+
+# On Windows:
 venv\Scripts\activate
-# Mac/Linux:
+
+# On macOS/Linux:
 source venv/bin/activate
+
 pip install -r requirements.txt
-```
+````
 
-## 🖥️ Usage
+---
 
-### Basic Operation
+## 🧪 Running the Application
+
+### ▶️ Basic Run
+
 ```bash
 python main.py
 ```
-- Processes 5 simulated leads
-- Runs follow-up checks in background
-- Saves results to `leads.csv`
 
-### Advanced Options
+* Starts 5 concurrent lead conversations
+* Enables background follow-up checks
+* Saves interactions to `leads.csv`
+
+### ⚙️ Advanced Options
+
 ```bash
-# Custom number of leads
+# Simulate 10 leads
 python main.py --leads 10
 
-# Test follow-up system only
+# Run follow-up test mode (faster delay)
 python followup_manager.py --test-mode
 
-# Generate leads without processing
+# Only simulate leads without processing
 python trigger_simulator.py --count 3
 ```
 
-## 🔧 Core Components
+---
 
-| File | Responsibility | Key Technologies |
-|------|----------------|------------------|
-| `agent.py` | Conversation flow, data collection | `rich`, CSV handling |
-| `followup_manager.py` | 24-hour follow-up system | `datetime`, threading |
-| `main.py` | Thread orchestration | `threading`, queue |
-| `trigger_simulator.py` | Lead generation | Randomization, queues |
+## 🔍 Key Modules Overview
 
-## 📊 Data Model
+| Module                 | Purpose                           | Key Concepts            |
+| ---------------------- | --------------------------------- | ----------------------- |
+| `agent.py`             | Conversational logic & data input | `rich`, CSV handling    |
+| `followup_manager.py`  | Follow-up system and scheduler    | `threading`, `datetime` |
+| `main.py`              | Thread orchestration and logging  | `threading`, `queue`    |
+| `trigger_simulator.py` | Simulated lead generation         | CLI, randomness         |
+
+---
+
+## 📊 Sample CSV Format
+
 ```csv
 lead_id,name,age,country,interest,status
-1234,John Doe,35,USA,AI Tools,secured
-5678,,,no_response
+1001,Alice,29,Canada,CRM Tools,secured
+1002,,,,,no_response
 ```
 
-## 🧪 Testing the System
+---
 
-1. **Concurrency Test**:
+## 🧪 Testing Checklist
+
+1. **High-Concurrency Simulation**
+
 ```bash
 python main.py --leads 20
 ```
 
-2. **Follow-up Simulation**:
+2. **Follow-up Simulation (Fast Test Delay)**
+
 ```bash
-python followup_manager.py --test-delay 5  # 5-second test delay
+python followup_manager.py --test-delay 5
 ```
 
-3. **Data Integrity Check**:
+3. **CSV Integrity Check**
+
 ```bash
 python -c "import csv; print(len(list(csv.reader(open('leads.csv')))))"
 ```
 
-## 🏗️ Design Decisions
+---
 
-1. **Threading over Async**:
-   - Chose `threading` for true parallel processing
-   - Better for CPU-bound conversation tasks
+## 💡 Design Decisions
 
-2. **Rich UI**:
-   - Professional console interface
-   - Color-coded message types
+* **Threading over Async**
 
-3. **CSV Storage**:
-   - Simple, portable data format
-   - Easy integration with analytics tools
+  * Real multithreading preferred for CPU+I/O tasks
+*  **Rich Terminal UI**
 
-4. **Follow-up System**:
-   - Background thread with configurable delay
-   - Tracks last interaction timestamp
+  * Improved UX with colors and formatting
+*  **CSV as Data Store**
+
+  * Portable and easy to integrate with external tools
+*  **Background Follow-ups**
+
+  * Daemon thread tracks elapsed time since last interaction
+
+---
 
 ## 📜 License
-MIT License - See [LICENSE](LICENSE) for details.
+
+Licensed under the [MIT License](LICENSE).
+
