@@ -5,7 +5,7 @@
 ![Threading](https://img.shields.io/badge/multithreading-supported-green)
 
 <p align="center">
-  <img src="architecture-diagram.png" alt="Architecture Diagram" width="400"/>
+  <img src="architecture-diagram.png" alt="Architecture Diagram" width="200"/>
 </p>
 
 A professional, multi-threaded Python sales agent that simulates concurrent lead conversations, automates follow-ups, and persists lead data using CSV. The interface leverages the `rich` library for an engaging, readable terminal UI.
