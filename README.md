@@ -4,6 +4,7 @@
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
 ![License](https://img.shields.io/github/license/AmaedaQ/sales-agent)
 ![Threading](https://img.shields.io/badge/multithreading-supported-green)
+![Architecture Diagram](architecture-diagram.png)
 
 A Python-based multi-threaded sales agent that simulates multiple concurrent lead conversations, handles automated follow-ups, and stores persistent lead data in a CSV file. Built with the `rich` library for a clean, interactive terminal UI.
 
