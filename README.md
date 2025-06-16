@@ -10,11 +10,11 @@
 
 A professional, multi-threaded Python sales agent that simulates concurrent lead conversations, automates follow-ups, and persists lead data using CSV. The interface leverages the `rich` library for an engaging, readable terminal UI.
 
-🎬 **Demo:** [Tella Video Walkthrough](https://www.tella.tv/video/sales-agent-1-cpdm)
+ **Demo:** [Tella Video Walkthrough](https://www.tella.tv/video/sales-agent-1-cpdm)
 
 ---
 
-## 🚀 Features
+##  Features
 
 - Multi-threaded lead processing (5+ concurrent conversations)
 - Modern terminal UI with the `rich` library
@@ -24,7 +24,7 @@ A professional, multi-threaded Python sales agent that simulates concurrent lead
 
 ---
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 sales-agent/
@@ -39,7 +39,7 @@ sales-agent/
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 ```bash
 git clone https://github.com/AmaedaQ/sales-agent.git
@@ -57,7 +57,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🧪 Running the Application
+##  Running the Application
 
 ### Basic Usage
 
@@ -78,7 +78,7 @@ python trigger_simulator.py --count 3      # Simulate 3 leads only (no processin
 
 ---
 
-## 🔍 Key Modules
+##  Key Modules
 
 | Module                 | Purpose                           | Concepts                |
 |------------------------|-----------------------------------|-------------------------|
@@ -89,7 +89,7 @@ python trigger_simulator.py --count 3      # Simulate 3 leads only (no processin
 
 ---
 
-## 📊 Sample CSV
+##  Sample CSV
 
 ```csv
 lead_id,name,age,country,interest,status
@@ -99,7 +99,7 @@ lead_id,name,age,country,interest,status
 
 ---
 
-## ✅ Testing Checklist
+##  Testing Checklist
 
 - **High-Concurrency Simulation**
   ```bash
@@ -116,7 +116,7 @@ lead_id,name,age,country,interest,status
 
 ---
 
-## 💡 Design Decisions
+##  Design Decisions
 
 - **Threading over Async:** Favoring real multithreading for CPU and I/O parallelism
 - **Rich Terminal UI:** Enhanced UX with color and formatting
@@ -125,6 +125,6 @@ lead_id,name,age,country,interest,status
 
 ---
 
-## 📜 License
+##  License
 
 Licensed under the [MIT License](LICENSE).
